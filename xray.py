@@ -1,10 +1,6 @@
 import os
 from flask import Flask, render_template, request
 import keras
-import pickle
-import time
-from sklearn.metrics import confusion_matrix, accuracy_score
-import numpy as np
 import cv2
 
 app = Flask(__name__)
