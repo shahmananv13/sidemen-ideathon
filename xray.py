@@ -5,12 +5,9 @@ import cv2
 import pyimgur
 
 app = Flask(__name__)
-UPLOAD_FOLDER = "../Ideathon/static"
-CATEGORIES = ["COVID POSITIVE", "COVID NEGATIVE"]
-CLIENT_ID = "cdb00d6daa103d1"
-dashes = "----"
 UPLOAD_FOLDER = "../Static"
 CATEGORIES = ["Covid Positive", "Covid Negative"]
+dashes = "----"
 
 def prepare(filepath):
     IMG_SIZE = 244
