@@ -8,7 +8,7 @@ import numpy as np
 import cv2
 
 app = Flask(__name__)
-UPLOAD_FOLDER = "C:\\Users\\91702\\Desktop\\Ideathon\\Static"
+UPLOAD_FOLDER = "../Static"
 CATEGORIES = ["Covid Positive", "Covid Negative"]
 
 
@@ -22,8 +22,7 @@ def prepare(filepath):
 
 @app.route("/", methods=["GET", "POST"])
 def upload_predict():
-    model = keras.models.load_model(
-        "C:\\Users\\91702\\Desktop\\Ideathon\\Model\\King.h5")
+    model = keras.models.load_model("../Model/King.h5")
     if request.method == "POST":
         image_file = request.files["image"]
         if image_file:
