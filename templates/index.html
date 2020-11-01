@@ -17,7 +17,7 @@
   <meta charset="utf-8">
   <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
   <!-- <title>Preview Image Before Upload | CodingNepal</title> -->
-  <link rel="stylesheet" href="{{ url_for('Static', filename='css/style.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
@@ -76,7 +76,7 @@
           wrapper.classList.add("active");
         }
         cancelBtn.addEventListener("click", function () {
-          img.src = "clean.PNG";
+          img.src = "static/clean.PNG";
           wrapper.classList.remove("active");
         })
         reader.readAsDataURL(file);
@@ -87,9 +87,9 @@
       }
     });
   </script>
-  <script src="{{ url_for('Static', filename='js/particles.min.js') }}"></script>
-  <script src="{{ url_for('Static', filename='js/particles.js') }}"></script>
-  <script src="{{ url_for('Static', filename='js/app.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
 
