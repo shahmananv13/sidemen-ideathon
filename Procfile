@@ -1,1 +1,1 @@
-web: gunicorn app:final_xray
+web: gunicorn xray:app

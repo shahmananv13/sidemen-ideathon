@@ -1,18 +1,19 @@
 import os
 from flask import Flask, render_template, request
 import keras
-import pickle
-import time
-from sklearn.metrics import confusion_matrix, accuracy_score
-import numpy as np
 import cv2
 import pyimgur
 
 app = Flask(__name__)
+<<<<<<< HEAD
 UPLOAD_FOLDER = "../Ideathon/static"
 CATEGORIES = ["COVID POSITIVE", "COVID NEGATIVE"]
 CLIENT_ID = "cdb00d6daa103d1"
 dashes = "----"
+=======
+UPLOAD_FOLDER = "../Static"
+CATEGORIES = ["Covid Positive", "Covid Negative"]
+>>>>>>> 701dfda1dbccda05232fd6a39a87b576f3b24b6e
 
 
 def prepare(filepath):
@@ -25,8 +26,12 @@ def prepare(filepath):
 
 @app.route("/", methods=["GET", "POST"])
 def upload_predict():
+<<<<<<< HEAD
     model = keras.models.load_model(
         "../Ideathon/Model/King.h5")
+=======
+    model = keras.models.load_model("../Model/King.h5")
+>>>>>>> 701dfda1dbccda05232fd6a39a87b576f3b24b6e
     if request.method == "POST":
         image_file = request.files["image"]
         if image_file:
