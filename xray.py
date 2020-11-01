@@ -2,12 +2,12 @@ import os
 from flask import Flask, render_template, request
 import keras
 import cv2
-import pyimgur
 
-app = Flask(__name__)
 UPLOAD_FOLDER = "../Static"
 CATEGORIES = ["Covid Positive", "Covid Negative"]
 dashes = "----"
+
+app = Flask(__name__)
 
 def prepare(filepath):
     IMG_SIZE = 244
