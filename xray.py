@@ -3,7 +3,7 @@ from flask import Flask, render_template, request
 import keras
 import cv2
 
-UPLOAD_FOLDER = "../Static"
+UPLOAD_FOLDER = "../static"
 CATEGORIES = ["Covid Positive", "Covid Negative"]
 dashes = "----"
 
