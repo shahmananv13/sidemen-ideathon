@@ -10,6 +10,7 @@ import cv2
 app = Flask(__name__)
 UPLOAD_FOLDER = "C:\\Users\\91702\\Desktop\\Ideathon\\Static"
 CATEGORIES = ["Covid Positive", "Covid Negative"]
+dashes = "----"
 
 
 def prepare(filepath):
@@ -32,7 +33,7 @@ def upload_predict():
             image_file.save(image_location)
             print(image_location)
             p = model.predict([prepare(image_location)])
-            return render_template("index.html", prediction=CATEGORIES[int(p[0, 0])])
+            return render_template("index.html", prediction=spaces+CATEGORIES[int(p[0, 0])]+spaces)
     return render_template("index.html", prediction=0)
 
 

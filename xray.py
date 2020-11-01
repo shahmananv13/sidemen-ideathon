@@ -6,10 +6,13 @@ import time
 from sklearn.metrics import confusion_matrix, accuracy_score
 import numpy as np
 import cv2
+import pyimgur
 
 app = Flask(__name__)
-UPLOAD_FOLDER = "C:\\Users\\91702\\Desktop\\Ideathon\\Static"
-CATEGORIES = ["Covid Positive", "Covid Negative"]
+UPLOAD_FOLDER = "../Ideathon/static"
+CATEGORIES = ["COVID POSITIVE", "COVID NEGATIVE"]
+CLIENT_ID = "cdb00d6daa103d1"
+dashes = "----"
 
 
 def prepare(filepath):
@@ -23,7 +26,7 @@ def prepare(filepath):
 @app.route("/", methods=["GET", "POST"])
 def upload_predict():
     model = keras.models.load_model(
-        "C:\\Users\\91702\\Desktop\\Ideathon\\Model\\King.h5")
+        "../Ideathon/Model/King.h5")
     if request.method == "POST":
         image_file = request.files["image"]
         if image_file:
@@ -32,10 +35,9 @@ def upload_predict():
                 image_file.filename,
             )
             image_file.save(image_location)
-            print(image_location)
             p = model.predict([prepare(image_location)])
-            return render_template("index.html", prediction=CATEGORIES[int(p[0, 0])])
-    return render_template("index.html", prediction=0)
+            return render_template("index.html", prediction=dashes+CATEGORIES[int(p[0, 0])]+dashes)
+    return render_template("index.html", prediction="-------RESULTS-------")
 
 
 if __name__ == "__main__":

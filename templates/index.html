@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 
 <title>CO-Ray</title>
 <h1>Upload new File</h1>
@@ -8,3 +8,89 @@
     <br>
     <h3>Prediction: {{prediction}}</h3>
 </form>
+ -->
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <!-- Somehow I got an error, so I comment the title, just uncomment to show -->
+  <!-- <title>Preview Image Before Upload | CodingNepal</title> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+  <div class="manan">
+    <div class="content">
+      <h2 class="text" data-text="SIDEMEN">
+        SIDEMEN</h2>
+    </div>
+  </div>
+  <div id="particles-js">
+    <div class="blah">
+      <div class="container">
+        <div class="wrapper">
+          <div class="image">
+            <img src="" alt="" onerror="this.src='static/clean.png';" />
+          </div>
+          <div id="cancel-btn">
+            <i class="fas fa-times"></i></div>
+          <div class="file-name">
+            File name here</div>
+        </div>
+        <button onclick="defaultBtnActive()" id="custom-btn">Choose an X-Ray</button>
+        <form class="form-upload" method=post enctype=multipart/form-data>
+          <input id="default-btn" type="file" name="image" hidden>
+          <input id="custom-btn" type=submit value=Predict>
+          <br>
+          <br>
+          <div class="output">
+            <h3>{{prediction}}</h3>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const wrapper = document.querySelector(".wrapper");
+    const fileName = document.querySelector(".file-name");
+    const defaultBtn = document.querySelector("#default-btn");
+    const customBtn = document.querySelector("#custom-btn");
+    const cancelBtn = document.querySelector("#cancel-btn i");
+    const img = document.querySelector("img");
+    let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+    function defaultBtnActive() {
+      defaultBtn.click();
+    }
+    defaultBtn.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          const result = reader.result;
+          img.src = result;
+          wrapper.classList.add("active");
+        }
+        cancelBtn.addEventListener("click", function () {
+          img.src = "static/clean.png";
+          wrapper.classList.remove("active");
+        })
+        reader.readAsDataURL(file);
+      }
+      if (this.value) {
+        let valueStore = this.value.match(regExp);
+        fileName.textContent = valueStore;
+      }
+    });
+  </script>
+  <script src="{{ url_for('static', filename='js/particles.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
