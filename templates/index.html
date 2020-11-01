@@ -33,7 +33,7 @@
       <div class="container">
         <div class="wrapper">
           <div class="image">
-            <img src="" alt="" onerror="this.src='clean.PNG';"/>
+            <img src="" alt="" onerror="this.src='../static/clean.PNG';"/>
           </div>
           <div id="cancel-btn">
             <i class="fas fa-times"></i></div>
@@ -76,7 +76,7 @@
           wrapper.classList.add("active");
         }
         cancelBtn.addEventListener("click", function () {
-          img.src = "clean.PNG";
+          img.src = "static/clean.PNG";
           wrapper.classList.remove("active");
         })
         reader.readAsDataURL(file);
